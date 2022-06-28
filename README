@@ -7,6 +7,12 @@ Requirements
 ------------
 In order to build dmenu you need the Xlib header files.
 
+Patching
+------------
+Patches located in patches folder can be applied with the following command
+
+    git am -3 < patches/*
+
 
 Installation
 ------------
