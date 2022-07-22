@@ -1,14 +1,14 @@
-From 310c0bef5762578aad06480a3893da18b2f14b49 Mon Sep 17 00:00:00 2001
+From 9cb8af518c3b11ed8525bc9e409a2720b645cf99 Mon Sep 17 00:00:00 2001
 From: Art Limbaga <alimbaga@tektelic.com>
 Date: Tue, 28 Jun 2022 13:33:25 -0600
-Subject: [PATCH 3/3] gruvbox colorscheme
+Subject: [PATCH 3/4] gruvbox colorscheme
 
 ---
  config.def.h | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/config.def.h b/config.def.h
-index 1edb647..36105e5 100644
+index 1edb647..c0439f8 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -9,9 +9,9 @@ static const char *fonts[] = {
@@ -24,6 +24,6 @@ index 1edb647..36105e5 100644
  };
  /* -l option; if nonzero, dmenu uses vertical list with given number of lines */
  static unsigned int lines      = 0;
---
-2.25.1
+-- 
+2.37.1
 

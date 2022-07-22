@@ -1,0 +1,51 @@
+From 0adfc0cc94f588f62a7e849ffa507491bb4105bc Mon Sep 17 00:00:00 2001
+From: alimbaga <limbaga@ualberta.ca>
+Date: Thu, 21 Jul 2022 23:20:50 -0600
+Subject: [PATCH 4/4] colored font support
+
+---
+ config.def.h |  3 ++-
+ drw.c        | 13 -------------
+ 2 files changed, 2 insertions(+), 14 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index c0439f8..78e6ee3 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -4,7 +4,8 @@
+ static int topbar = 1;                      /* -b  option; if 0, dmenu appears at bottom     */
+ /* -fn option overrides fonts[0]; default X11 font or font set */
+ static const char *fonts[] = {
+-	"monospace:size=10"
++	"monospace:size=16",
++	"Noto Color Emoji:size=16:antialias=true:autohint=true",
+ };
+ static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
+ static const char *colors[SchemeLast][2] = {
+diff --git a/drw.c b/drw.c
+index ced7d37..75758dd 100644
+--- a/drw.c
++++ b/drw.c
+@@ -133,19 +133,6 @@ xfont_create(Drw *drw, const char *fontname, FcPattern *fontpattern)
+ 		die("no font specified.");
+ 	}
+ 
+-	/* Do not allow using color fonts. This is a workaround for a BadLength
+-	 * error from Xft with color glyphs. Modelled on the Xterm workaround. See
+-	 * https://bugzilla.redhat.com/show_bug.cgi?id=1498269
+-	 * https://lists.suckless.org/dev/1701/30932.html
+-	 * https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=916349
+-	 * and lots more all over the internet.
+-	 */
+-	FcBool iscol;
+-	if(FcPatternGetBool(xfont->pattern, FC_COLOR, 0, &iscol) == FcResultMatch && iscol) {
+-		XftFontClose(drw->dpy, xfont);
+-		return NULL;
+-	}
+-
+ 	font = ecalloc(1, sizeof(Fnt));
+ 	font->xfont = xfont;
+ 	font->pattern = pattern;
+-- 
+2.37.1
+
